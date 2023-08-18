@@ -40,7 +40,7 @@ exports.signup = catchAsync(async (req, res, next) => {
     role: req.body.role,
   });
   const url = `${req.protocol}://${req.get('host')}/me`;
-  console.log(url);
+  // console.log(url);
   await new Email(newUser, url).sendWelcome();
   createSendToken(newUser, 201, res);
   next();
@@ -65,7 +65,7 @@ exports.login = catchAsync(async (req, res, next) => {
   createSendToken(user, 200, res);
 });
 exports.logOut = (req, res) => {
-  console.log('Function reached');
+  // console.log('Function reached');
   res.cookie('jwt', 'loggedOut', {
     expires: new Date(Date.now() + 10 * 1000),
     httpOnly: true,
@@ -147,8 +147,8 @@ exports.protect = catchAsync(async (req, res, next) => {
 exports.restrictTo = (...roles) => {
   return (req, res, next) => {
     //roles is an array which is a normal function which is wrapped around a middleware function
-    console.log(roles);
-    console.log(req.user.role);
+    // console.log(roles);
+    // console.log(req.user.role);
     if (!roles.includes(req.user.role)) {
       return next(
         new AppError('You do not have permission to perform this action', 403)
@@ -180,11 +180,11 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
       message: 'Token sent to mail',
     });
   } catch (err) {
-    console.log(err);
+    // console.log(err);
     user.passwordResetToken = undefined;
     user.passwordResetExpires = undefined;
     await user.save({ validateBeforeSave: false });
-    console.log(err);
+    // console.log(err);
     return next(new AppError('Error sending email try again', 500));
   }
 });

@@ -4,7 +4,7 @@ const DB =
   'mongodb+srv://ibad:1234@cluster0.0i7q5ea.mongodb.net/natours?retryWrites=true&w=majority';
 process.on('uncaughtException', (err) => {
   console.log(err);
-  console.log('Unhandled exception! shutting down...');
+  ('Unhandled exception! shutting down...');
   process.exit(1);
 });
 
@@ -27,7 +27,7 @@ const server = app.listen(port, () => {
 });
 
 process.on('unhandledRejection', (err) => {
-  console.log(err.name, err.message);
+  // console.log(err.name, err.message);
   console.log('Unhandled rejection! shutting down...');
   server.close(() => {
     process.exit(1);

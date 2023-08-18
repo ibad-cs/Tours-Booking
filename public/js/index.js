@@ -19,7 +19,7 @@ if (updateElement) {
     form.append('name', document.getElementById('name').value);
     form.append('email', document.getElementById('email').value);
     form.append('photo', document.getElementById('photo').files[0]);
-    console.log(form);
+    // console.log(form);
 
     updateSettings(form, 'data');
   });
@@ -59,9 +59,9 @@ if (bookBtn) {
 }
 
 if (signupForm) {
-  console.log('here');
+  // console.log('here');
   signupForm.addEventListener('submit', (e) => {
-    console.log('In signupForm');
+    // console.log('In signupForm');
     e.preventDefault();
     const n = document.getElementById('name').value;
     const email = document.getElementById('email').value;

@@ -18,6 +18,8 @@ const port = 3000;
 const cookieParser = require('cookie-parser');
 const app = express();
 var cors = require('cors');
+const compression = require('compression');
+app.use(compression());
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 //Serving static files

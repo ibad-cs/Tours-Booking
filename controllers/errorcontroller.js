@@ -39,7 +39,7 @@ const senderrorprod = (err, req, res) => {
   } else {
     //Rendered normal error
     if (err.isOperational) {
-      console.log(err);
+      // console.log(err);
       return res.status(err.statuscode).render('error', {
         title: 'Something went wrong',
         msg: err.message,
@@ -65,7 +65,7 @@ const handleValidationErrorDB = (err) => {
 };
 const handleDuplicateErrorDB = (err) => {
   const value = err.keyValue.name;
-  console.log(value);
+  // console.log(value);
   const message = `Duplicate Data name ${value}`;
   return new AppError(message, 404);
 };
@@ -84,7 +84,7 @@ module.exports = (err, req, res, next) => {
   } else if (process.env.NODE_ENV == 'production') {
     let error = { ...err };
     error.message = err.message;
-    console.log('EERORR', err.name);
+    // console.log('EERORR', err.name);
     if (err.name == 'CastError') {
       error = handleCastErrorDB(error);
     } else if (err.code == 11000) {
